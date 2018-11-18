@@ -1,51 +1,19 @@
+import random
+import logging
+
 import hlt
 
 from hlt import constants
 from hlt.positionals import Direction
 
-import random
-import logging
+from data.Graph import Graph
 
 game = hlt.Game()
 
 game_map = game.game_map
 
-links_count = (game_map.width * game_map.height) * 2
-node_count = game_map.width * game_map.height
-
-graph = [[0 for _ in range(links_count)] for _ in range(node_count)]
-
-current_link = 0
-for node_number in range(node_count):
-    if (node_number + 1) % game_map.height != 0:
-        graph[node_number][current_link] = 1
-        graph[node_number + 1][current_link] = 1
-
-        current_link += 1
-
-    if node_number % game_map.width == 0:
-        graph[node_number][current_link] = 1
-        graph[node_number + game_map.width - 1][current_link] = 1
-
-        current_link += 1
-
-    if node_number < game_map.height:
-        graph[node_number][current_link] = 1
-        graph[game_map.width * game_map.height - game_map.width + node_number][current_link] = 1
-
-        current_link += 1
-
-    if node_number + game_map.width < node_count:
-        graph[node_number][current_link] = 1
-        graph[node_number + game_map.width][current_link] = 1
-
-        current_link += 1
-
-# with open('graph.txt', 'w') as f:
-#     for i in range(node_count):
-#         for j in range(links_count):
-#             symbol = '\n' if j == links_count - 1 else ', '
-#             f.write('{}{}'.format(graph[i][j], symbol))
+G = Graph(game_map.width, game_map.height)
+logging.info(G)
 
 game.ready("MyPythonBot")
 
