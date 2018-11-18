@@ -13,7 +13,7 @@ class Graph(object):
         self.height = height
 
         self.nodes_count = self.width * self.height
-        self.links_count = self.nodes_count * 2
+        self.links_count = self.nodes_count * 4
 
         self._nodes = [Node(i) for i in range(self.nodes_count)]
         self._links = []
@@ -54,7 +54,7 @@ class Graph(object):
                 self._links.append(link.swap_direction())
 
     def __str__(self):
-        return 'GRAPH. Nodes: {}; Links: {}'.format(len(self._nodes), len(self._links))
+        return 'GRAPH. Nodes: {}; Links: {}'.format(self.nodes_count, self.links_count)
 
     def __getitem__(self, location):
         if isinstance(location, Position):
