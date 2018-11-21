@@ -1,3 +1,4 @@
+import os
 import json
 import logging
 import sys
@@ -24,8 +25,15 @@ class Game:
 
         num_players, self.my_id = map(int, read_input().split())
 
+        # logging.basicConfig(
+        #     filename="bot-{}.log".format(self.my_id),
+        #     filemode="w",
+        #     level=logging.DEBUG,
+        # )
+        if not os.path.exists('logs'):
+            os.makedirs('logs')
         logging.basicConfig(
-            filename="bot-{}.log".format(self.my_id),
+            filename="logs/bot-{}.log".format(self.my_id),
             filemode="w",
             level=logging.DEBUG,
         )

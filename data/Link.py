@@ -8,4 +8,4 @@ class Link(object):
         return Link(self._to, self._from, self.weight)
 
     def __str__(self):
-        return 'LINK. From: {}; To: {}'.format(self._from.number, self._to.number)
+        return 'LINK. From: {}; To: {}; Weight: {}'.format(self._from.number, self._to.number, self.weight)

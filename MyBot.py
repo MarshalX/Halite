@@ -12,7 +12,7 @@ game = hlt.Game()
 
 game_map = game.game_map
 
-G = Graph(game_map.width, game_map.height)
+G = Graph(game_map)
 logging.info(G)
 
 game.ready("MyPythonBot")
@@ -24,6 +24,8 @@ while True:
 
     me = game.me
     game_map = game.game_map
+
+    G.update_weight(game_map)
 
     command_queue = []
 

@@ -1,8 +1,15 @@
+from hlt.positionals import Position
+
+
 class Node(object):
-    def __init__(self, number):
+    def __init__(self, number, i=0, j=0):
         self.number = number
+        self.position = Position(i, j)
 
         self._links = []
+
+        self.halite_amount = 0
+        self.ship, self.structure = None, None
 
     def __getitem__(self, item):
         return self._links[item]
